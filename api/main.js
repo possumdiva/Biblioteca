@@ -7,3 +7,5 @@ router.get("/home", (req, res) => {
     location: "home",
   });
 });
+
+module.exports = router;
