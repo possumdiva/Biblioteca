@@ -15,11 +15,10 @@ app.use(bodyParser.json());
 app.use("/", express.static(__dirname + "/public"));
 app.use("/js", express.static(__dirname + "/js"));
 app.use("/css", express.static(__dirname + "/css"));
-
+// apiBooks(app, fetch);
 // API routing
-app.use("/", apiMain);
-app.use("/api/apiHeatherbeat", apiHeatherbeat);
-apiBooks(app, fetch);
+// app.use("/", apiMain);
+app.use("/api/Heatherbeat", apiHeatherbeat);
 
 app.listen(3001, () => {
   console.log("The server is running on port 3001");

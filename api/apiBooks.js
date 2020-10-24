@@ -1,7 +1,8 @@
 module.exports = (app, fetch) => {
   app.get("/api/books", async (req, res) => {
+    console.log(req.body);
     const { author, title } = req.body;
-    console.log(author, title);
+
     const params = `${title ? "title=" + title : ""}${
       author ? "&author=" + author : ""
     }`;
