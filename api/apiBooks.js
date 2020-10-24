@@ -1,11 +1,13 @@
 module.exports = (app, fetch) => {
   app.get("/api/books", async (req, res) => {
     const { author, title } = req.body;
-    const params = `${title ? "title" + title : ""}${
+    console.log(author, title);
+    const params = `${title ? "title=" + title : ""}${
       author ? "&author=" + author : ""
     }`;
-    fetch(`http//poenlibrary.org/search.json?${params}&limit=10`)
+    fetch(`http://openlibrary.org/search.json?title=harriet&limit=10`)
       .then((result) => result.json())
-      .then((data) => res.json(data));
+      .then((data) => res.json(data))
+      .catch((err) => console.log(err));
   });
 };

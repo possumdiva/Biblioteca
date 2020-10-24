@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const passport = require("passport");
 const app = express();
+const fetch = require("node-fetch");
 
 const apiHeatherbeat = require("./api/apiHeatherbeat");
 const apiBooks = require("./api/apiBooks");
@@ -18,7 +19,7 @@ app.use("/css", express.static(__dirname + "/css"));
 // API routing
 app.use("/", apiMain);
 app.use("/api/apiHeatherbeat", apiHeatherbeat);
-app.use("/api/apiBooks", apiBooks);
+apiBooks(app, fetch);
 
 app.listen(3001, () => {
   console.log("The server is running on port 3001");
