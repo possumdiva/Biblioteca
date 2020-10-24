@@ -6,18 +6,19 @@ const session = require("express-session");
 const passport = require("passport");
 const app = express();
 
+const apiHeatherbeat = require("./api/apiHeatherbeat");
+const apiBooks = require("./api/apiBooks");
+
+app.use(bodyParser.json());
+
 app.use("/", express.static(__dirname + "/public"));
 app.use("/js", express.static(__dirname + "/js"));
 app.use("/css", express.static(__dirname + "/css"));
 
 // API routing
 app.use("/", apiMain);
-
-app.get("/heartbeat", (req, res) => {
-  res.json({
-    is: "working",
-  });
-});
+app.use("/api/apiHeatherbeat", apiHeatherbeat);
+app.use("/api/apiBooks", apiBooks);
 
 app.listen(3001, () => {
   console.log("The server is running on port 3001");

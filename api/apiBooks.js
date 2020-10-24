@@ -1,0 +1,11 @@
+module.exports = (app, fetch) => {
+  app.get("/api/books", async (req, res) => {
+    const { author, title } = req.body;
+    const params = `${title ? "title" + title : ""}${
+      author ? "&author=" + author : ""
+    }`;
+    fetch(`http//poenlibrary.org/search.json?${params}&limit=10`)
+      .then((result) => result.json())
+      .then((data) => res.json(data));
+  });
+};
