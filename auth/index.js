@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  console.log("help");
+router.get("/auth/github", (req, res) => {
   res.json({
-    is: "working",
+    data: "trying to login",
   });
 });
 
